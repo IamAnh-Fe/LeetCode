@@ -10,10 +10,9 @@ public class Solution {
         for (final int c : count) {
 
           ans += c / 2 * 2;
-          // if(ans % 2 == 0 && c % 2 == 1){
-          //   ans++; 
-          // }
-          System.out.print(c );
+          if(ans % 2 == 0 && c % 2 == 1){
+            ans++; 
+          }
         }
         return ans;
       }
