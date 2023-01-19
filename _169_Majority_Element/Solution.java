@@ -9,7 +9,6 @@ public class Solution {
             ans = num;
           }
           count += num == ans ? 1 : -1;
-           System.out.print(count);
         }
         return ans;
   }
