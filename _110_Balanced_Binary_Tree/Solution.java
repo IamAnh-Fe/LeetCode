@@ -27,7 +27,6 @@ public class Solution {
       if(root == null){
         return 0;
       }
-      System.out.println(maxDepth(root.left));
       return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
   public static void main(String[] args) {

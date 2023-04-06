@@ -2,7 +2,7 @@ package _704_Binary_Search;
 
 public class Solution {
   public static int search(int[] nums, int target) {
-    int l = nums[0];
+    int l = 0;
     int r = nums.length - 1;
     while(l <= r){
       int m = l + (r - l) / 2;
