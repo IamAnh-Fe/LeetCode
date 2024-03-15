@@ -14,7 +14,7 @@ public class Solution {
         return maxProfit;
   }
   public static int maxProfit2(int[] prices) {
-    if(prices == null || prices.length <=1) 
+    if(prices == null || prices.length <= 1)
     {
         return 0;
     }

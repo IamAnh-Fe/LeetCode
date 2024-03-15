@@ -5,10 +5,13 @@ import java.util.Map;
 public class Solution {
   //Time complexity: O(n^2)
   public static int[] BruteForce(int[] nums, int target) { 
-    for (int i = 0; i < nums.length; i++) {
-      for (int j =i; j < nums.length; j++) {
-        if (nums[i] + nums[j] == target) {
-          return new int[] { i, j };
+    for (int i = 1; i < nums.length; i++) {
+      for (int j = i; j < nums.length; j++) {
+        System.out.println("i:" + i);
+        System.out.println("j:" + j);
+
+        if (nums[j - i] + nums[j] == target) {
+          return new int[] { j - i, j };
         }
       }
     }
@@ -26,28 +29,11 @@ public class Solution {
     }
     throw new IllegalArgumentException();
   }
-//-------------------------------------
-  //Time complexity: O(n*log(n))
-  public static int[] TwoPointer(int[] nums, int target){
-        int left = 0;
-    int right = nums.length - 1;
-    while(left < right){
-      if(nums[left] + nums[right] == target){
-        return new int[] {left, right};
-      }else if(nums[left] + nums[right] < target){
-        left++;
-      } else {
-        right--;
-      }
-      
-    }
-    return new int[] {};
-  }
+
   public static void main(String[] args) {
     int target = 9;
-    int[] nums = { 2, 7, 11, 15 };
+    int[] nums = { 11, 15,2, 7};
     System.out.println(Arrays.toString(BruteForce(nums, target)));
     System.out.println(Arrays.toString(HashMap(nums, target)));
-    System.out.println(Arrays.toString(TwoPointer(nums, target)));
   }
 }
