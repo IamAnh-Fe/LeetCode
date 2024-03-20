@@ -1,21 +1,35 @@
 package _15_3Sum;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
 public class Solution {
-    public static List<Integer> BruteForce(int[] nums) {
-        int n = nums.length;
-        for (int i = 0; i < n - 2; i++) {
-            for (int j = 0; j < n - 1; j++) {
-                for (int k = 0; k < n; k++) {
-                    if(nums[i] + nums[j] + nums[k] == 0){
-                        return  List.of(nums[i],nums[j], nums[k]);
-                    }
+    public static List<List<Integer>> HashTable(int[] nums) {
+        Arrays.sort(nums);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], i);
+        }
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                break;
+            }
+            if (i - 1 >= 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] > 0) {
+                    break;
+                }
+                if (j - 1 >= i + 1 && nums[j] == nums[j - 1]) {
+                    continue;
+                }
+                Integer k = map.get(-nums[i] - nums[j]);
+                if (k != null && k > j) {
+                    res.add(Arrays.asList(nums[i], nums[j], nums[k]));
                 }
             }
         }
-        return Collections.emptyList();
+        return res;
     }
         public static List<List<Integer>> threeSum(int[] nums) {
         if(nums.length < 3){
@@ -23,7 +37,6 @@ public class Solution {
         }
         List<List<Integer>> ans = new ArrayList<>(); 
         Arrays.sort(nums);
-        System.out.println(Arrays.toString(nums));
         for (int i = 0; i + 2 < nums.length; i++) {
           if(i > 0 && nums[i] == nums[i - 1]){
             continue;
@@ -51,7 +64,7 @@ public class Solution {
   public static void main(String[] args) {
     int[] nums = {-1,0,1,2,-1,-4};
     System.out.println(threeSum(nums));
-      System.out.println(BruteForce(nums));
+    System.out.println(HashTable(nums));
 
   }
 }

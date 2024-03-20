@@ -19,6 +19,7 @@ public class Solution {
         }
         return max;
   }
+
   //-----------------------------------------
   public static int Kadane(int[] nums) {
     int max = Integer.MIN_VALUE;
