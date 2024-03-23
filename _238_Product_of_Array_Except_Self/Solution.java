@@ -76,12 +76,28 @@ public class Solution {
         res[n-1] = prod;
         return res;
     }
+    public  static int[] solution(int[] nums){
+        int l = 1;
+        int r = 1;
+        int n = nums.length;
+        int[] ans = new int[n];
+        for(int i = 0; i < n; i++){
+            ans[i] = l;
+            l *= nums[i];
+        }
+        for(int i = n - 1; i >= 0; i--){
+            ans[i] *= r;
+            r *= nums[i];
+        }
+        return ans;
+    }
     public  static  void  main(String[] args){
      int[] nums = {1,2,3,4};
      System.out.println(Arrays.toString(BruteForce(nums)));
      System.out.println(Arrays.toString(Deviding(nums)));
      System.out.println(Arrays.toString(PreAndSuf1(nums)));
      System.out.println(Arrays.toString(PreAndSuf2(nums)));
+     System.out.println(Arrays.toString(solution(nums)));
 
     }
 
